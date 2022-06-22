@@ -1,0 +1,57 @@
+/**
+ * Write a description of Part1 here.
+ * 
+ * @author (Adekilekun Fatiu) 
+ * @version (a version number or a date)
+ */
+public class Part1 {
+    public String findSimpleGene(String dna){
+        //String result = ""
+        int startIndex = dna.indexOf("ATG");
+        if(startIndex == -1) {
+            return "";
+        }
+        int stopIndex = dna.indexOf("TAA", startIndex + 3);
+        if(stopIndex == -1) {
+            return "";
+        }
+        if((stopIndex + 3 - startIndex)%3 == 0) {
+            return dna.substring(startIndex,stopIndex + 3);
+        }
+        else{
+            return "";
+        }
+    }
+    public void testSimpleGene(){
+        String a = "ATCGCPTCGTGCTAAGAA";
+        System.out.println("DNA strand is " + a);
+        String ag= findSimpleGene(a);
+        System.out.println("GENE is " + ag);
+        
+        String s = "TCGAAATGTGCCGTTCCTGG";
+        System.out.println("DNA strand is " + s);
+        String sg = findSimpleGene(s);
+        System.out.println("GENE is " + sg);
+        
+        String d = "TCCATCGTCCCGGTCCTGGAATCCTGACGA";
+        System.out.println("DNA strand is " + d);
+        String dg = findSimpleGene(d);
+        System.out.println("GENE is " + dg);
+        
+        String f = "ATTATGGTCATCGTCTCCTAATCCTAA";
+        System.out.println("DNA strand is " + f);
+        String fg = findSimpleGene(f);
+        System.out.println("GENE is " + fg);
+        
+        String g = "ATATGATCGTCGAATGACGTAATC";
+        System.out.println("DNA strand is " + g);
+        String gg = findSimpleGene(g);
+        System.out.println("GENE is " + gg);
+}
+     public static void main (String[] args) {
+         Part1 gene = new Part1();
+         gene.testSimpleGene();
+        }
+    }
+
+
